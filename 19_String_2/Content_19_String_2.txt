@@ -1,0 +1,41 @@
+## Advanced String Algorithms (Part 2)
+
+This section covers more complex string algorithms and patterns that build upon the fundamentals in Part 1.
+
+### 1. **String Hashing (Rabin-Karp Algorithm)**
+- **Concept:** A technique to represent a string as a single number (its hash value). This allows for very fast comparisons of substrings.
+- **Rolling Hash:** The key idea is to compute the hash of a new substring from the hash of the previous substring in `O(1)` time.
+    - To slide a window of length `k` from `s[i...i+k-1]` to `s[i+1...i+k]`:
+        1. **Subtract** the contribution of the character at `s[i]`.
+        2. **Shift** the hash value (e.g., multiply by a prime base).
+        3. **Add** the contribution of the character at `s[i+k]`.
+    - All calculations are done modulo a large prime to prevent overflow.
+- **Use Cases:**
+    - [ ] Finding all occurrences of a pattern string `p` in a text `t`.
+    - [ ] Finding the longest duplicate substring.
+- **Collisions:** Hash collisions are possible (two different strings having the same hash). This can be handled by:
+    - Doing a final character-by-character comparison if hashes match.
+    - Using a double-hashing technique (two different hash functions).
+
+### 2. **Knuth-Morris-Pratt (KMP) Algorithm**
+- **Concept:** A highly efficient algorithm for finding the first (or all) occurrences of a pattern `p` in a text `t`.
+- **Time Complexity:** `O(t + p)`, where `t` and `p` are the lengths of the text and pattern.
+- **Core Idea:** It avoids re-checking characters in the text. When a mismatch occurs, it uses a precomputed "Longest Proper Prefix which is also Suffix" (LPS) array to know how many characters to shift the pattern forward.
+- **LPS Array (`lps[]`):**
+    - `lps[i]` stores the length of the longest proper prefix of `pattern[0...i]` which is also a suffix of `pattern[0...i]`.
+    - This precomputation takes `O(p)` time.
+- **Interview Scope:** KMP is a classic algorithm but can be complex to implement under pressure. It's important to understand the concept of the LPS array and how it helps avoid redundant comparisons.
+
+### 3. **Manacher's Algorithm**
+- **Concept:** A linear-time `O(n)` algorithm for finding the **longest palindromic substring** in a given string.
+- **Core Idea:** It cleverly avoids redundant computations by expanding around centers. It maintains the center and right boundary of the palindrome found so far that extends furthest to the right. It uses this information to initialize the palindrome length for new centers, skipping work that has already been done.
+- **Transformation:** The algorithm is simplest to implement if the string is first transformed to handle even-length palindromes easily (e.g., `s = "aba"` -> `t = "#a#b#a#"`).
+- **Interview Scope:** This is a very advanced and non-trivial algorithm. It is unlikely to be required in most interviews, but it's a "nice to know" for competitive programming or specialized roles. The standard `O(n^2)` "expand from center" approach is usually sufficient.
+
+### 4. **Advanced Problems Combining Patterns**
+- Many hard string problems involve combining string manipulation with other data structures and algorithms.
+- **Examples:**
+    - [ ] **Minimum Window Substring (Hard):** Sliding window + HashMap for character counts.
+    - [ ] **Text Justification (Hard):** Greedy approach with careful simulation and edge case handling.
+    - [ ] **Integer to English Words (Hard):** A complex mapping and chunking problem, not algorithmic but requires very clean code.
+    - [ ] **Shortest Palindrome (Hard):** Can be solved using KMP or Rabin-Karp by finding the longest palindromic prefix of the string.

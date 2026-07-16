@@ -1,0 +1,57 @@
+## Advanced Algorithms & Concepts
+
+This section contains a mix of advanced algorithms and problem-solving paradigms that are useful for tackling harder interview questions.
+
+### 1. **Reservoir Sampling**
+- **Concept:** A family of randomized algorithms for selecting a simple random sample of `k` items from a list `S` containing `n` items, where `n` is either a very large or unknown number.
+- **Use Case:** When you can't fit all `n` items into memory. You want to process the items in a single pass and maintain a representative sample of size `k`.
+- **Algorithm (Algorithm R):**
+    1. Create a "reservoir" array of size `k` and fill it with the first `k` items from the stream.
+    2. For each subsequent item `i` (from `k+1` to `n`):
+       - Generate a random integer `j` between `0` and `i` (inclusive).
+       - If `j` is less than `k`, replace the element at `reservoir[j]` with the item `i`.
+    3. After iterating through all items, the reservoir contains a fair random sample.
+- **Problem:** "Linked List Random Node" (if the length is unknown).
+
+### 2. **Sliding Window Median / Order Statistic Tree**
+- **Concept:** A data structure or technique to find the median (or any k-th order statistic) of a moving window of numbers.
+- **Use Case:** Problems that ask for the median of all subarrays of size `k`.
+- **The Two-Heap Method:**
+    - **Data Structure:** Maintain two heaps:
+        1. A **Max-Heap (`lo`)** to store the smaller half of the numbers.
+        2. A **Min-Heap (`hi`)** to store the larger half of the numbers.
+    - **Invariant:** The heaps are kept balanced such that their sizes differ by at most 1.
+    - **Finding the Median:**
+        - If the sizes are equal, the median is `(lo.peek() + hi.peek()) / 2.0`.
+        - If one is larger, its root is the median.
+    - **Adding/Removing Numbers:** When the window slides, a number is added and another is removed. This requires `O(log k)` for heap insertion and `O(k)` for heap removal (since Java's `PriorityQueue` doesn't have an efficient `remove(element)` method).
+- **Problem:** "Find Median from Data Stream".
+
+### 3. **Topological Sort Applications**
+- **Recap:** An ordering of nodes in a Directed Acyclic Graph (DAG) such that for every edge `u -> v`, `u` comes before `v`.
+- **Advanced Use Cases:**
+    - **Task Scheduling:** If tasks have dependencies, a topological sort gives a valid order to execute them.
+    - **Detecting Cycles:** If a topological sort cannot be completed (i.e., it doesn't include all nodes), the graph has a cycle.
+    - **Longest Path in a DAG:** Can be solved with a modification of the topological sort algorithm. Unlike in general graphs, this is not NP-hard for DAGs.
+- **Problems:**
+    - "Course Schedule" (Cycle detection)
+    - "Course Schedule II" (Finding the order)
+    - "Alien Dictionary" (Building a graph from rules and finding the topological order)
+
+### 4. **Backtracking with Pruning**
+- **Recap:** A recursive technique to explore all possible solutions by trying every option and backtracking.
+- **Pruning:** The "advanced" part of backtracking is identifying clever ways to "prune" the search tree. This means adding logic to the recursive function to stop exploring a path as soon as it's clear that it cannot lead to a valid or optimal solution.
+- **Examples:**
+    - In a "Combination Sum" problem, if the `current_sum` already exceeds the `target`, there's no point in exploring further down that path.
+    - In a "Word Search II" problem, using a Trie to build the words prunes the search to only valid prefixes.
+    - In Sudoku, constraint propagation can prune the possible numbers for a cell.
+
+### 5. **Meet-in-the-Middle**
+- **Concept:** A search algorithm that works by splitting a problem into two halves, solving each half independently, and then combining the results.
+- **Use Case:** It's effective for problems where a brute-force search on the entire problem space is too slow (e.g., `O(2^n)`), but `O(2^(n/2))` is feasible.
+- **Algorithm:**
+    1. Split the input set of size `n` into two halves of size `n/2`.
+    2. Generate all possible states/results for the first half and store them (e.g., in a hash set or sorted list). This takes `O(2^(n/2))` time.
+    3. Generate all possible states/results for the second half. For each state, search in the stored results from the first half to see if a valid combination can be formed. This also takes `O(2^(n/2) * log(2^(n/2)))` or `O(2^(n/2))`.
+- **Total Complexity:** Roughly `O(2^(n/2))`, which is a huge improvement over `O(2^n)`.
+- **Problem:** "Partition to K Equal Sum Subsets" can sometimes be optimized with this.

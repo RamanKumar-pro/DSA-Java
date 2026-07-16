@@ -1,0 +1,88 @@
+## Two Pointers and Sliding Window Patterns
+
+### 1. **Two Pointers Pattern**
+- **Core Idea:** Uses two pointers to iterate through an array or sequence, often to find a pair or a subsequence that satisfies a condition. This can turn a potential O(n^2) brute-force solution into an O(n) linear one.
+
+#### **1.1. Pointers from Opposite Ends**
+- **When to use:** On a **sorted** array or string where you need to find a pair of elements that meet a certain condition.
+- **Template:**
+  ```
+  left = 0, right = n - 1
+  while (left < right):
+      sum = arr[left] + arr[right]
+      if sum == target:
+          // found pair
+          left++, right--
+      else if sum < target:
+          left++ // need a larger sum
+      else:
+          right-- // need a smaller sum
+  ```
+- **Problems:**
+  - [ ] Two Sum II (Input array is sorted)
+  - [ ] Valid Palindrome
+  - [ ] Container With Most Water
+  - [ ] 3Sum (often involves sorting then using this pattern in a loop)
+
+#### **1.2. Pointers in the Same Direction (Fast & Slow)**
+- **When to use:** When dealing with cycles, or when one pointer needs to "scout ahead" for the other.
+- **Template (example for finding middle of linked list):**
+  ```
+  slow = head, fast = head
+  while (fast != null && fast.next != null):
+      slow = slow.next
+      fast = fast.next.next
+  // slow is now at the middle
+  ```
+- **Problems:**
+  - [ ] Middle of the Linked List
+  - [ ] Linked List Cycle (Floyd's Tortoise and Hare)
+  - [ ] Remove Duplicates from Sorted Array
+  - [ ] Remove Nth Node From End of List
+
+---
+
+### 2. **Sliding Window Pattern**
+- **Core Idea:** Creates a "window" over a portion of a sequence (array or string). This window can either be of a fixed size or a dynamic size. It's used to find a subarray or substring that satisfies a given condition.
+
+#### **2.1. Fixed-Size Window**
+- **When to use:** The problem asks for something about a subarray/substring of a **fixed length `k`**.
+- **Template:**
+  ```
+  // 1. Initialize window sum/state for the first k elements
+  // 2. Iterate from k to the end of the array
+  // 3. In each step:
+  //    a. "Slide" the window: Add the new element (at the right)
+  //    b. "Slide" the window: Remove the old element (from the left)
+  //    c. Update the global maximum/minimum/result
+  ```
+- **Problems:**
+  - [ ] Maximum Sum Subarray of Size K
+  - [ ] Find All Anagrams in a String (window size is length of the anagram)
+
+#### **2.2. Dynamic-Size Window / Two Pointers**
+- **When to use:** The problem asks for the **longest** or **shortest** subarray/substring that satisfies a condition. The window grows and shrinks based on the condition. This is a more common and powerful variant.
+- **Template:**
+  ```
+  left = 0, result = 0
+  // 'right' pointer expands the window
+  for right in 0 to n-1:
+      // Add arr[right] to the window state (e.g., a hash map, a sum)
+
+      // 'while' loop shrinks the window from the left
+      while (condition is not met):
+          // Remove arr[left] from the window state
+          left++
+
+      // Update result (e.g., max_length = max(max_length, right - left + 1))
+  ```
+- **Problems:**
+  - [ ] **Longest** Substring Without Repeating Characters
+  - [ ] **Minimum** Size Subarray Sum
+  - [ ] **Longest** Repeating Character Replacement
+  - [ ] Permutation in String
+  - [ ] **Minimum** Window Substring (Hard)
+
+### 3. **Key Differences**
+- **Two Pointers:** Often about finding **pairs** or specific positions (e.g., middle). Pointers can jump around or move non-sequentially.
+- **Sliding Window:** Always about a **contiguous** subarray/substring. The window moves sequentially through the data. It's a specific application of the two-pointer technique.

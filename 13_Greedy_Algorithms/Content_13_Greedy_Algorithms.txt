@@ -1,0 +1,45 @@
+## Greedy Algorithms
+
+### 1. **Core Concept**
+- **Greedy Choice:** At each step, make the choice that seems best at the moment, without considering future consequences.
+- **Goal:** The locally optimal choice leads to a globally optimal solution.
+- **When does it work?** Greedy algorithms only work for problems that have the **Greedy Choice Property** and **Optimal Substructure**.
+    - **Greedy Choice Property:** A globally optimal solution can be arrived at by making a locally optimal (greedy) choice.
+    - **Optimal Substructure:** An optimal solution to the problem contains optimal solutions to its subproblems.
+- **Contrast with Dynamic Programming:** DP explores all choices and then decides which is best. Greedy commits to a choice and never looks back.
+
+### 2. **Proving a Greedy Algorithm**
+- **Greedy Stays Ahead:** Show that after each step of the greedy algorithm, its solution is at least as good as any other algorithm's solution.
+- **Exchange Argument:** Assume there is a better solution than the one found by the greedy algorithm. Show that you can exchange parts of the "better" solution to make it more like the greedy solution without making it worse. Repeating this process eventually transforms the "better" solution into the greedy solution, proving the greedy solution is optimal.
+
+### 3. **Common Greedy Patterns & Problems**
+- **Sorting the Input:** Many greedy problems require sorting the input based on some criteria as the first step. The "greedy choice" is then often to process the items in this sorted order.
+
+- **Interval Problems:**
+    - [ ] **Activity Selection / Interval Scheduling:** Given a set of intervals, find the maximum number of non-overlapping intervals.
+        - **Greedy Choice:** Sort by **finish time**. Always pick the next interval that starts after the last chosen one finishes.
+    - [ ] **Merge Intervals:** Given intervals, merge all overlapping ones.
+        - **Greedy Choice:** Sort by **start time**. Iterate and merge with the previous interval if they overlap.
+    - [ ] **Non-overlapping Intervals:** Find the minimum number of intervals to remove to make the rest non-overlapping. (Same as Activity Selection, but framed differently).
+    - [ ] **Meeting Rooms II:** Find the minimum number of conference rooms required to hold all meetings.
+        - **Greedy Choice:** Sort by start time. Use a min-heap to track the end times of meetings currently in rooms.
+
+- **Partitioning & Grouping:**
+    - [ ] **Partition Labels:** Partition a string such that each letter appears in at most one part.
+        - **Greedy Choice:** Find the last occurrence of each character. Extend the current partition to the furthest "last occurrence" seen so far.
+
+- **Problems involving "Jumps" or "Stops":**
+    - [ ] **Jump Game:** Can you reach the last index?
+        - **Greedy Choice:** Keep track of the `max_reach` possible from the current position.
+    - [ ] **Jump Game II:** Minimum jumps to reach the last index.
+        - **Greedy Choice:** At each step, jump to the position that offers the farthest reach for the *next* jump.
+
+- **Other Classic Problems:**
+    - [ ] **Fractional Knapsack:** (Classic example where greedy works).
+    - [ ] **Huffman Coding:** (Used for data compression).
+    - [ ] **Gas Station:** Find if you can complete a circuit tour.
+
+### 4. **When to be Skeptical of Greedy**
+- If the problem feels like it requires balancing two competing metrics (e.g., value and weight in the 0/1 Knapsack problem), a greedy approach might not work.
+- If a local choice can negatively impact the overall solution space, DP or other techniques are likely needed.
+- **Example where greedy fails:** The 0/1 Knapsack problem (you can't take fractions of items). A greedy approach of picking the highest value-per-weight item might not yield the optimal result.

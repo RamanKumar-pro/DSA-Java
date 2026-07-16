@@ -1,0 +1,57 @@
+## Math and Geometry Concepts
+
+This section covers common math and geometry concepts that appear in coding interviews. These problems often test logic and careful implementation rather than deep theoretical knowledge.
+
+### 1. **Number Theory**
+    - [ ] **Prime Numbers:**
+        - **Primality Test:** How to check if a number `n` is prime. (Trial division up to `sqrt(n)`).
+        - **Sieve of Eratosthenes:** An efficient algorithm to find all prime numbers up to a given limit `n`.
+    - [ ] **Greatest Common Divisor (GCD) and Least Common Multiple (LCM):**
+        - **Euclidean Algorithm:** The standard efficient method to compute `GCD(a, b)`.
+        - `LCM(a, b) = (|a * b|) / GCD(a, b)`.
+    - [ ] **Modular Arithmetic:**
+        - Performing arithmetic with a `mod` operator.
+        - `(a + b) % m = ((a % m) + (b % m)) % m`
+        - `(a * b) % m = ((a % m) * (b % m)) % m`
+    - [ ] **Modular Exponentiation (Exponentiation by Squaring):**
+        - Efficiently computing `(base^exp) % mod` in `O(log exp)` time.
+    - [ ] **Factorials and Trailing Zeros:**
+        - The number of trailing zeros in `n!` is determined by the number of factors of 5 in its prime factorization.
+
+### 2. **Combinatorics**
+    - [ ] **Combinations and Permutations:**
+        - `nCr` (n choose r): Number of ways to choose `r` items from a set of `n` without regard to order.
+        - `nPr`: Number of ways to arrange `r` items from a set of `n`.
+    - [ ] **Pascal's Triangle:** Can be used to compute combinations. The `(r, c)` entry is `rCc`.
+    - [ ] **Catalan Numbers:** A sequence of numbers that appear in many counting problems (e.g., number of valid parenthesis combinations, number of unique BSTs).
+
+### 3. **Basic Probability**
+    - [ ] Problems involving calculating the probability of an event.
+    - [ ] Expected Value: The weighted average of all possible outcomes.
+    - [ ] Problems involving random number generation (e.g., implementing a `rand7()` from a `rand5()`).
+
+### 4. **Geometry**
+    - **Representing Geometric Shapes:**
+        - **Point:** `(x, y)` coordinates.
+        - **Line:** Can be represented by two points or by an equation `y = mx + c`.
+        - **Rectangle:** Two opposite corner points, or a corner point with width and height.
+    - **Common Formulas and Concepts:**
+        - **Distance Formula:** `sqrt((x2-x1)^2 + (y2-y1)^2)`.
+        - **Slope of a Line:** `(y2-y1) / (x2-x1)`.
+        - **Collinearity:** Three points are collinear if their slopes are equal.
+        - **Intersection:**
+            - Check if two rectangles overlap.
+            - Find the intersection point of two lines.
+    - **Common Problems:**
+        - [ ] **Rotate Image:** Rotate a matrix by 90 degrees.
+        - [ ] **Spiral Matrix:** Traverse a matrix in a spiral order.
+        - [ ] **Set Matrix Zeroes:** If an element is 0, set its entire row and column to 0.
+        - [ ] **Detect Squares:** Given a list of points, count how many squares can be formed.
+        - [ ] **Convex Hull:** Find the smallest convex polygon that encloses a set of points (e.g., using Graham scan or Monotone Chain algorithm). This is an advanced topic.
+
+### 5. **Miscellaneous Math**
+    - [ ] **Digital Root:** The single-digit value obtained by an iterative process of summing digits.
+    - [ ] **Happy Number:** A number that eventually reaches 1 when replaced by the sum of the square of its digits.
+    - [ ] **Plus One:** Add one to a number represented as an array of digits.
+    - [ ] **Excel Sheet Column Number/Title:** Convert between column titles ("A", "B", ..., "AA") and their corresponding numbers.
+    - [ ] **Angle Between Hands of a Clock.**

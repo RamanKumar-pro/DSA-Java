@@ -1,0 +1,48 @@
+## Advanced Data Structures
+
+This section covers data structures that are less common than the fundamentals but are powerful tools for specific problem types. While you might not need to implement them all from scratch in a typical interview, understanding their purpose, interface, and complexity is valuable.
+
+### 1. **Union-Find (Disjoint Set Union - DSU)**
+- **Use Case:** Primarily used to track a set of elements partitioned into a number of disjoint (non-overlapping) subsets. It's extremely efficient for checking if two elements are in the same subset (i.e., if they are "connected").
+- **Core Operations:**
+    - `find(i)`: Returns the representative (or root) of the set containing element `i`.
+    - `union(i, j)`: Merges the two subsets containing elements `i` and `j`.
+- **Key Applications:**
+    - [ ] Detecting cycles in an undirected graph (used in Kruskal's algorithm).
+    - [ ] Finding the number of connected components in a graph.
+    - [ ] Solving problems like "Number of Provinces" or "Accounts Merge".
+- **Optimizations (Crucial for performance):**
+    - [ ] **Path Compression:** During a `find` operation, make every node on the path point directly to the root.
+    - [ ] **Union by Rank/Size:** When merging two sets, always attach the smaller tree to the root of the larger tree.
+- **Complexity:** With both optimizations, operations are nearly constant time on average (`Amortized O(α(n))`, where `α(n)` is the inverse Ackermann function, which is practically `< 5`).
+
+### 2. **Segment Tree**
+- **Use Case:** A versatile tree-based data structure that allows for fast **range queries** and **point updates** on an array.
+- **Core Operations:**
+    - `build(arr)`: Builds the tree from an initial array in `O(n)` time.
+    - `query(left, right)`: Answers a query on a specific range (e.g., find the sum, min, max, or gcd of elements from index `left` to `right`). Time: `O(log n)`.
+    - `update(index, value)`: Updates the value at a specific index in the array and propagates the change up the tree. Time: `O(log n)`.
+- **Key Applications:**
+    - [ ] Range Sum/Min/Max Query problems where the array values can change.
+    - [ ] Problems involving geometric queries or computational geometry.
+- **Implementation:** It's a binary tree where each leaf represents an element of the array, and each internal node represents a merged result of its children (e.g., the sum of its children's ranges).
+
+### 3. **Fenwick Tree (Binary Indexed Tree - BIT)**
+- **Use Case:** Similar to a Segment Tree, it supports range queries and point updates. It's often preferred when applicable because it's much easier to implement and requires less space.
+- **Core Operations:**
+    - `query(index)`: Calculates the cumulative sum from the start of the array up to `index`. Time: `O(log n)`.
+    - `update(index, delta)`: Adds `delta` to the element at `index` and updates the tree. Time: `O(log n)`.
+- **Key Feature:** A range sum `sum(left, right)` can be calculated as `query(right) - query(left - 1)`.
+- **Limitations:** A standard BIT is best suited for **prefix queries** (queries starting from index 0). It's less flexible than a Segment Tree for arbitrary range queries like range minimum (which are not based on cumulative properties).
+- **Implementation:** Uses clever bit manipulation (`i & -i`) to navigate the tree structure, which is implicitly represented in a simple array.
+
+### 4. **LRU (Least Recently Used) Cache**
+- **Use Case:** A cache eviction policy. It's a data structure that stores a fixed number of key-value pairs. When the cache is full and a new item is added, the least recently used item is removed.
+- **Core Operations:**
+    - `get(key)`: Retrieves a value. This access makes the item "recently used".
+    - `put(key, value)`: Inserts or updates a value. This also makes the item "recently used".
+- **Implementation:**
+    - A **Doubly Linked List** to maintain the order of usage. Nodes are moved to the front (most recent) on `get` or `put`. The tail is the least recent.
+    - A **Hash Map** to provide `O(1)` access to the nodes in the linked list. `Map<Key, Node>`.
+- **Complexity:** Both `get` and `put` operations are `O(1)`.
+- **Problem:** "LRU Cache" is a very common design interview question.

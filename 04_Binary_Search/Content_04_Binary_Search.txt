@@ -1,0 +1,45 @@
+## Binary Search
+
+### 1. **Core Concepts**
+    - [ ] **Algorithm:**
+        - [ ] Iterative approach
+        - [ ] Recursive approach
+    - [ ] **Requirements:** The array or search space must be sorted.
+    - [ ] **Time Complexity:** O(log n)
+    - [ ] **Space Complexity:** O(1) for iterative, O(log n) for recursive stack space.
+    - [ ] **Key Idea:** Halving the search space in each step.
+    - [ ] **Avoiding Integer Overflow:** `mid = low + (high - low) / 2`
+
+### 2. **Standard Binary Search Problems**
+    - [ ] **Finding a specific element:**
+        - [ ] Search in a sorted array.
+        - [ ] `Arrays.binarySearch()` in Java.
+    - [ ] **Variations on finding an element:**
+        - [ ] Find First and Last Position of Element in Sorted Array (Search Range).
+        - [ ] Find the element that is closest to the target.
+        - [ ] Search in a rotated sorted array.
+        - [ ] Find Minimum in Rotated Sorted Array.
+        - [ ] Search in a rotated sorted array with duplicates.
+
+### 3. **Binary Search on the Answer**
+    - [ ] **Concept:** When you can't directly search on the array, but you can guess an answer and verify if it's feasible in O(n) or better. The range of possible answers must be monotonic.
+    - [ ] **Identifying the pattern:**
+        - The problem asks for the minimum "maximum" or maximum "minimum".
+        - The problem can be phrased as "Is it possible to achieve a value of at least `x`?"
+        - If a value `x` is a possible answer, then any value smaller/larger than `x` (depending on the problem) is also possible.
+    - [ ] **Example Problems:**
+        - [ ] Koko Eating Bananas
+        - [ ] Split Array Largest Sum
+        - [ ] Capacity to Ship Packages Within D Days
+        - [ ] Find the Smallest Divisor Given a Threshold
+        - [ ] Median of Two Sorted Arrays (a very advanced application)
+
+### 4. **Binary Search in 2D Arrays**
+    - [ ] Search in a 2D matrix where each row and column is sorted.
+    - [ ] Search in a 2D matrix where rows are sorted and the first element of a row is greater than the last element of the previous row.
+
+### 5. **Implementation Details**
+    - [ ] **Template 1:** `while (low <= high)` - used for finding an exact element.
+    - [ ] **Template 2:** `while (low < high)` - used for finding boundaries (first/last occurrence).
+    - [ ] **Template 3:** `while (low + 1 < high)` - another boundary-finding template.
+    - [ ] Understanding how to adjust `low` and `high` correctly (`high = mid`, `high = mid - 1`, `low = mid`, `low = mid + 1`) is crucial.

@@ -1,0 +1,56 @@
+## Recursion and Backtracking
+
+### 1. **Core Recursion Concepts**
+    - [ ] **Base Case:** The condition that stops the recursion. A missing or incorrect base case leads to a `StackOverflowError`.
+    - [ ] **Recursive Step:** The part of the function that calls itself, moving closer to the base case.
+    - [ ] **Call Stack:** Understanding how Java uses the call stack to manage recursive function calls.
+    - [ ] **Helper Methods:** Using a helper function to carry additional state (parameters) through the recursion.
+    - [ ] **Tail Recursion:** A recursive call is the very last operation in the function. (Note: Java does not optimize this automatically).
+
+### 2. **Classic Recursion Problems**
+    - [ ] Factorial, Fibonacci Numbers
+    - [ ] Power of a number (e.g., `pow(x, n)`)
+    - [ ] Reversing a string or linked list
+    - [ ] Tree traversals (Pre-order, In-order, Post-order)
+    - [ ] Merge Sort, Quick Sort
+    - [ ] Greatest Common Divisor (GCD)
+
+### 3. **Backtracking: The General Template**
+    - Backtracking is a form of recursion for exploring all possible solutions to a problem and systematically discarding solutions that don't work.
+    - **The "Choose, Explore, Un-choose" Pattern:**
+        ```
+        function backtrack(arguments, current_state):
+            if current_state is a valid solution:
+                add solution
+                return
+
+            for each possible choice:
+                1. **Choose:** Make the choice. Add it to the current_state.
+                2. **Explore:** Call backtrack(arguments, updated_state).
+                3. **Un-choose:** Backtrack. Remove the choice from current_state.
+        ```
+
+### 4. **Common Backtracking Problem Categories**
+    - [ ] **Subsets / Combinations:**
+        - [ ] Given a set, find all possible subsets (Power Set).
+        - [ ] Given a set, find all combinations of size `k`.
+        - [ ] Combination Sum (elements can be reused).
+        - [ ] Combination Sum II (elements cannot be reused, may have duplicates).
+    - [ ] **Permutations:**
+        - [ ] Find all permutations of a set.
+        - [ ] Permutations II (set may have duplicates).
+    - [ ] **Grid/Matrix Traversal:**
+        - [ ] Word Search in a 2D board.
+        - [ ] Number of Islands (can also be solved with BFS/DFS).
+        - [ ] N-Queens problem.
+        - [ ] Sudoku Solver.
+    - [ ] **Sequential/Partitioning Problems:**
+        - [ ] Palindrome Partitioning.
+        - [ ] Letter Combinations of a Phone Number.
+        - [ ] Generate Parentheses.
+
+### 5. **Tips for Backtracking Problems**
+    - [ ] **State Management:** Carefully define what state needs to be passed in each recursive call (e.g., current index, current path, target sum).
+    - [ ] **Pruning:** Add conditions to stop exploring a path early if it's clear it won't lead to a valid solution. This is key for optimization (e.g., if `current_sum > target`).
+    - [ ] **Duplicates:** If the input has duplicates, sort it first. Then, in your loop, add a check to skip an element if it's the same as the previous one, to avoid duplicate combinations/permutations.
+    - [ ] **Visualize:** Draw the recursion tree for a small example to understand the flow.

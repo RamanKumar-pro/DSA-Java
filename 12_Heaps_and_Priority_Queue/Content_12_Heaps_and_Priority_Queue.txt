@@ -1,0 +1,61 @@
+## Heaps and Priority Queues
+
+### 1. **Core Concepts**
+- **What is a Heap?** A heap is a specialized tree-based data structure that satisfies the "heap property". It's a **Complete Binary Tree**.
+    - **Min-Heap:** The value of each node is less than or equal to the value of its children. The root is the minimum element.
+    - **Max-Heap:** The value of each node is greater than or equal to the value of its children. The root is the maximum element.
+- **Implementation:** While it's a tree conceptually, a heap is usually implemented efficiently using an array. The parent-child relationship is maintained using index calculations:
+    - For a node at index `i`:
+        - Parent is at `(i-1)/2`
+        - Left child is at `2*i + 1`
+        - Right child is at `2*i + 2`
+- **Priority Queue:** A Priority Queue is an abstract data type that operates like a queue, but where each element has a "priority". Heaps are the perfect data structure to implement them.
+    - **Java `PriorityQueue`:**
+        - `PriorityQueue<Integer> pq = new PriorityQueue<>();` // Creates a Min-Heap by default.
+        - `PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());` // Creates a Max-Heap.
+
+### 2. **Core Operations**
+- **Insertion (`add` or `offer`):**
+    - Add the element to the end of the array (bottom level of the tree).
+    - "Bubble up" or "sift up": Swap the element with its parent until the heap property is restored.
+    - **Time Complexity:** `O(log n)`
+- **Peek (`peek` or `element`):**
+    - Return the root element without removing it.
+    - **Time Complexity:** `O(1)`
+- **Extraction (`poll` or `remove`):**
+    - Remove the root element.
+    - Move the last element of the array to the root.
+    - "Bubble down" or "sift down": Swap the new root with its smaller (for min-heap) or larger (for max-heap) child until the heap property is restored.
+    - **Time Complexity:** `O(log n)`
+- **Heapify:** The process of converting an arbitrary array of numbers into a heap. This can be done in `O(n)` time by starting from the last non-leaf node and sifting down.
+
+### 3. **Key Problem Patterns**
+
+#### **Pattern: Top 'K' Elements**
+- **Concept:** This pattern is used to find the top `K` largest/smallest elements, or the `K`-th largest/smallest element in a set.
+- **Technique:**
+    - To find the **Top K Largest** elements, use a **Min-Heap** of size `K`. Iterate through the numbers. If the current number is larger than the smallest number in the heap (the root), pop the root and push the current number.
+    - To find the **Top K Smallest**, use a **Max-Heap** of size `K`.
+- **Why it works:** The heap maintains a "window" of the `K` most relevant elements seen so far, allowing you to find the final `K` elements in a single pass.
+- **Problems:**
+    - [ ] Kth Largest Element in an Array
+    - [ ] Top K Frequent Elements
+    - [ ] K Closest Points to Origin
+    - [ ] Kth Smallest Element in a Sorted Matrix
+
+#### **Pattern: Two Heaps**
+- **Concept:** This pattern is used to solve problems where you need to find a median or partition a set into two halves.
+- **Technique:**
+    - Maintain two heaps:
+        1. A **Max-Heap** (`left` or `lo`) to store the smaller half of the numbers.
+        2. A **Min-Heap** (`right` or `hi`) to store the larger half of the numbers.
+    - **The Invariant:** Keep the heaps balanced so their sizes differ by at most 1. The `left` heap's max element will always be less than or equal to the `right` heap's min element.
+    - **Finding the Median:** The median is either the root of the larger heap or the average of the two roots.
+- **Problems:**
+    - [ ] Find Median from Data Stream
+    - [ ] Sliding Window Median
+
+### 4. **Other Common Problems**
+- [ ] **Merge K Sorted Lists:** Use a Min-Heap to keep track of the smallest element from each of the `k` lists.
+- [ ] **Task Scheduler:** Use a Priority Queue to greedily process the most frequent tasks first.
+- [ ] **Connecting Ropes / Minimum Cost to Connect Sticks:** Use a Min-Heap to always combine the two smallest ropes/sticks.

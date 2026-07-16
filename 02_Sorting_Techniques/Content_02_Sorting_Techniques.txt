@@ -1,0 +1,64 @@
+## Sorting Algorithms and Concepts
+
+### 1. **Fundamental Sorting Algorithms (Comparison-based)**
+    - [ ] **Bubble Sort**
+        - Time Complexity: O(n^2) average and worst, O(n) best
+        - Space Complexity: O(1)
+        - Stable: Yes
+    - [ ] **Selection Sort**
+        - Time Complexity: O(n^2) in all cases
+        - Space Complexity: O(1)
+        - Stable: No (by default, can be made stable)
+    - [ ] **Insertion Sort**
+        - Time Complexity: O(n^2) average and worst, O(n) best (for nearly sorted data)
+        - Space Complexity: O(1)
+        - Stable: Yes
+        - Use Case: Efficient for small or nearly sorted datasets.
+
+### 2. **Efficient Sorting Algorithms**
+    - [ ] **Merge Sort**
+        - Time Complexity: O(n log n) in all cases
+        - Space Complexity: O(n) for arrays, O(log n) for linked lists
+        - Stable: Yes
+        - Paradigm: Divide and Conquer
+        - Use Case: External sorting, linked lists.
+    - [ ] **Quick Sort**
+        - Time Complexity: O(n log n) average and best, O(n^2) worst
+        - Space Complexity: O(log n) average (for recursion stack)
+        - Stable: No
+        - Paradigm: Divide and Conquer
+        - Key Idea: Partitioning (e.g., Lomuto, Hoare)
+        - Use Case: Very fast in practice for arrays.
+    - [ ] **Heap Sort**
+        - Time Complexity: O(n log n) in all cases
+        - Space Complexity: O(1)
+        - Stable: No
+        - Key Idea: Uses a Binary Heap data structure.
+        - Use Case: Guaranteed O(n log n) performance with O(1) space.
+
+### 3. **Non-Comparison Sorting Algorithms (Linear Time)**
+    - [ ] **Counting Sort**
+        - Time Complexity: O(n + k) where k is the range of input
+        - Space Complexity: O(k)
+        - Constraint: Works for integers in a specific range.
+    - [ ] **Radix Sort**
+        - Time Complexity: O(d * (n + b)) where d is digits, b is base
+        - Space Complexity: O(n + b)
+        - Constraint: Works for integers or strings.
+    - [ ] **Bucket Sort (or Bin Sort)**
+        - Time Complexity: O(n + k) average, O(n^2) worst
+        - Space Complexity: O(n + k)
+        - Constraint: Assumes input is uniformly distributed.
+
+### 4. **Sorting-Related Problems and Concepts**
+    - [ ] In-place vs. Out-of-place sorting
+    - [ ] Stable vs. Unstable sorting
+    - [ ] Problems involving sorting:
+        - [ ] Finding the k-th smallest/largest element (Quickselect)
+        - [ ] Sorting an array of 0s, 1s, and 2s (Dutch National Flag problem)
+        - [ ] Merging two sorted arrays
+        - [ ] Interval problems (e.g., Merge Intervals)
+        - [ ] Problems where sorting the input is the first step (e.g., finding duplicates, anagrams)
+    - [ ] `Arrays.sort()` in Java (uses a hybrid of QuickSort and InsertionSort for primitives, and MergeSort for objects).
+    - [ ] `Collections.sort()` in Java (uses MergeSort).
+    - [ ] Custom sorting with `Comparator` or `Comparable`.

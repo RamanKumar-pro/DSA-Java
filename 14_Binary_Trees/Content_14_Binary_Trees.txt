@@ -1,0 +1,62 @@
+## Binary Trees
+
+### 1. **Core Concepts**
+    - [ ] **Node Structure:** A `val`, a `left` child pointer, and a `right` child pointer.
+    - [ ] **Terminology:**
+        - **Root:** The top-most node.
+        - **Parent, Child, Sibling:** Basic family-like relationships.
+        - **Leaf Node:** A node with no children.
+        - **Internal Node:** A node with at least one child.
+        - **Depth:** Length of the path from the root to a node.
+        - **Height:** Length of the longest path from a node to a leaf. The height of the tree is the height of the root.
+    - [ ] **Types of Binary Trees:**
+        - **Full Binary Tree:** Every node has either 0 or 2 children.
+        - **Complete Binary Tree:** All levels are completely filled, except possibly the last level, which is filled from left to right. (Important for Heaps).
+        - **Perfect Binary Tree:** A full binary tree where all leaf nodes are at the same level.
+        - **Balanced Binary Tree:** A tree where the height difference between the left and right subtrees of any node is at most 1 (e.g., AVL, Red-Black trees).
+
+### 2. **Tree Traversal Algorithms**
+- **Depth-First Search (DFS) - Typically Recursive:**
+    - [ ] **Pre-order Traversal:** `(Root, Left, Right)`
+        - Use Case: Copying a tree, creating a prefix expression.
+    - [ ] **In-order Traversal:** `(Left, Root, Right)`
+        - Use Case: In a Binary Search Tree (BST), this gives you the nodes in sorted order.
+    - [ ] **Post-order Traversal:** `(Left, Right, Root)`
+        - Use Case: Deleting a tree, postfix expressions.
+- **Breadth-First Search (BFS) - Iterative with a Queue:**
+    - [ ] **Level-Order Traversal:** Visit nodes level by level, from left to right.
+        - Use Case: Finding the shortest path from the root to a node, problems involving levels.
+
+### 3. **Key Patterns and Problems**
+    - [ ] **Recursion:** Most tree problems are naturally solved with recursion. The solution for a tree is often composed of the solutions for its left and right subtrees.
+        - **Template:**
+          ```java
+          public Result solve(TreeNode root) {
+              if (root == null) {
+                  return baseCaseResult;
+              }
+              Result leftResult = solve(root.left);
+              Result rightResult = solve(root.right);
+              return combine(root.val, leftResult, rightResult);
+          }
+          ```
+
+- **Common Problems:**
+    - [ ] **Maximum Depth of Binary Tree:** (Classic recursion example).
+    - [ ] **Same Tree:** Check if two trees are structurally identical and have the same node values.
+    - [ ] **Invert Binary Tree:** Swap the left and right children for all nodes.
+    - [ ] **Subtree of Another Tree:** Check if one tree is a subtree of another.
+    - [ ] **Balanced Binary Tree:** Check if the tree is height-balanced.
+    - [ ] **Diameter of Binary Tree:** Find the length of the longest path between any two nodes.
+    - [ ] **Lowest Common Ancestor (LCA) of a Binary Tree:** Find the LCA of two given nodes.
+
+- **Level-Order / BFS Problems:**
+    - [ ] **Binary Tree Level Order Traversal:** Return a list of lists, where each inner list contains the nodes at one level.
+    - [ ] **Binary Tree Right Side View:** Return the values of the nodes you can see from the right side.
+    - [ ] **Average of Levels in Binary Tree.**
+
+- **Serialization and Deserialization:**
+    - [ ] **Serialize and Deserialize Binary Tree:** Convert a tree to a string (e.g., using pre-order traversal) and back again. This is a classic design/algorithm question.
+
+### 4. **Binary Tree vs. Binary Search Tree (BST)**
+- A Binary Tree is a general structure. A BST is a **sorted** binary tree with specific ordering properties, which will be covered in the next section. All BSTs are Binary Trees, but not all Binary Trees are BSTs.

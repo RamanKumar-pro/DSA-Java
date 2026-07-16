@@ -1,0 +1,56 @@
+## String Manipulation and Algorithms (Part 1)
+
+### 1. **Core String Concepts (Java)**
+    - [ ] **Immutability:** `String` objects are immutable.
+    - [ ] **String Pool:** How Java stores and reuses string literals.
+    - [ ] **`String` vs. `StringBuilder` vs. `StringBuffer`:**
+        - [ ] `String`: Immutable, best for non-changing strings.
+        - [ ] `StringBuilder`: Mutable, not thread-safe. Use for building strings in a single thread.
+        - [ ] `StringBuffer`: Mutable, thread-safe. Slower than `StringBuilder`.
+    - [ ] Common `String` methods: `charAt()`, `length()`, `substring()`, `equals()`, `hashCode()`, `split()`, `toCharArray()`.
+
+### 2. **Basic String Manipulation Problems**
+    - [ ] **Palindrome:**
+        - [ ] Check if a string is a palindrome (using two pointers).
+        - [ ] Valid Palindrome II (can delete one character).
+    - [ ] **Anagrams:**
+        - [ ] Check if two strings are anagrams (using sorting or a character count array/HashMap).
+        - [ ] Group Anagrams (using HashMap).
+    - [ ] **Substrings and Subsequences:**
+        - [ ] Understand the difference.
+        - [ ] Generate all substrings.
+        - [ ] Check if one string is a subsequence of another.
+    - [ ] **Reversal and Rotation:**
+        - [ ] Reverse a string (or parts of it).
+        - [ ] Check if one string is a rotation of another.
+
+### 3. **Common String Algorithm Patterns**
+    - [ ] **Two Pointers:**
+        - [ ] Converging from opposite ends (e.g., palindrome check).
+        - [ ] Moving in the same direction (e.g., finding substrings).
+    - [ ] **Sliding Window:**
+        - [ ] Longest Substring Without Repeating Characters.
+        - [ ] Minimum Window Substring.
+        - [ ] Find All Anagrams in a String.
+    - [ ] **Hashing/Frequency Counting:**
+        - [ ] Using a `HashMap` or an `int[26]` array for character counts.
+        - [ ] Ransom Note.
+        - [ ] First Unique Character in a String.
+
+### 4. **Encoding and Decoding**
+    - [ ] Run-Length Encoding (e.g., "AAABBC" -> "3A2B1C").
+    - [ ] Basic encoding/decoding problems.
+
+### 5. **Example Problems**
+    - [ ] **Easy:**
+        - [ ] Valid Palindrome
+        - [ ] Valid Anagram
+        - [ ] First Unique Character in a String
+        - [ ] Longest Common Prefix
+    - [ ] **Medium:**
+        - [ ] Longest Substring Without Repeating Characters
+        - [ ] Group Anagrams
+        - [ ] Palindromic Substrings
+        - [ ] Longest Palindromic Substring
+        - [ ] String to Integer (atoi)
+        - [ ] Encode and Decode Strings

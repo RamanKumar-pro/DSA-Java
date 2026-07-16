@@ -1,0 +1,80 @@
+## Dynamic Programming (DP)
+
+### 1. **Core Concepts**
+- **What is DP?** Dynamic Programming is an optimization technique for solving complex problems by breaking them down into simpler, overlapping subproblems. It solves each subproblem only once and stores its result, avoiding redundant computations.
+- **Two Key Properties:**
+    - [ ] **Optimal Substructure:** An optimal solution to the overall problem can be constructed from the optimal solutions of its subproblems.
+    - [ ] **Overlapping Subproblems:** The problem can be broken down into subproblems that are reused several times.
+
+### 2. **The Two Approaches to DP**
+- **1. Top-Down with Memoization (Recursive):**
+    - [ ] **Idea:** Write a standard recursive solution, then add a cache (e.g., a HashMap or an array) to store the results of subproblems. Before computing, check if the result is already in the cache.
+    - **Template:**
+      ```java
+      Map<State, Result> memo = new HashMap<>();
+      Result solve(State state) {
+          if (baseCase(state)) return baseValue;
+          if (memo.containsKey(state)) return memo.get(state);
+
+          // Compute the result by making recursive calls
+          Result res = ... solve(nextState) ...;
+
+          memo.put(state, res); // Store result before returning
+          return res;
+      }
+      ```
+    - **Pros:** Often more intuitive to write, as it follows the logical flow of the recursion. Only solves subproblems that are actually needed.
+
+- **2. Bottom-Up with Tabulation (Iterative):**
+    - [ ] **Idea:** Solve the problem "backwards". Figure out the order of subproblems and solve them iteratively, starting from the smallest ones. Store results in a table (e.g., a 1D or 2D array).
+    - **Template:**
+      ```java
+      // Initialize DP table (dp array) with base case values
+      dp[0] = ...;
+
+      // Loop through states and compute current state's answer from previous ones
+      for (int i = 1; i <= n; i++) {
+          dp[i] = ... dp[i-1] ... dp[i-2] ...;
+      }
+
+      return dp[n]; // The final answer
+      ```
+    - **Pros:** Can be more efficient due to no recursion overhead. Sometimes allows for space optimization.
+
+### 3. **Common DP Patterns and Problem Categories**
+
+#### **1D DP (Sequences/Arrays)**
+- Subproblems are defined by an index `i`. `dp[i]` often means "the max/min/best result for the subarray ending at `i`".
+- **Problems:**
+    - [ ] **Climbing Stairs:** `dp[i] = dp[i-1] + dp[i-2]`
+    - [ ] **House Robber:** `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`
+    - [ ] **Longest Increasing Subsequence (LIS):** `dp[i]` is the length of the LIS ending at index `i`. `O(n^2)` approach.
+    - [ ] **Coin Change:** `dp[i]` is the minimum coins to make amount `i`.
+    - [ ] **Word Break:** `dp[i]` is true if the substring `s[0...i-1]` can be segmented.
+
+#### **2D DP (Grids, Two Strings, or Two Indices)**
+- Subproblems are defined by two indices, `(i, j)`. `dp[i][j]` can mean various things depending on the problem.
+- **Problems:**
+    - [ ] **Unique Paths:** `dp[i][j] = dp[i-1][j] + dp[i][j-1]`
+    - [ ] **Longest Common Subsequence (LCS):** `dp[i][j]` is the LCS of `text1[0...i-1]` and `text2[0...j-1]`.
+    - [ ] **Edit Distance:** `dp[i][j]` is the min operations to convert `word1[0...i-1]` to `word2[0...j-1]`.
+    - [ ] **0/1 Knapsack:** `dp[i][w]` is the max value using items `1..i` with capacity `w`.
+
+#### **DP on Trees/Graphs**
+- Often involves a post-order traversal. The result for a node is computed based on the results from its children.
+- **Problems:**
+    - [ ] House Robber III
+    - [ ] Diameter of a Binary Tree (can be seen as a DP problem)
+
+#### **State-Machine DP**
+- The state needs to track more than just indices, e.g., "am I currently holding a stock?".
+- **Problems:**
+    - [ ] Best Time to Buy and Sell Stock with Cooldown
+
+### 4. **How to Approach a DP Problem**
+1. **Identify if it's a DP problem:** Does it ask for a max/min, count, or feasibility? Does it have optimal substructure and overlapping subproblems?
+2. **Define the State:** What information do you need to solve a subproblem? This defines your DP array/memoization key (e.g., `dp[i]`, `dp[i][j]`).
+3. **Find the Recurrence Relation:** Express the solution for a state in terms of smaller/previous states. This is the hardest part. `dp[i] = f(dp[i-1], dp[j]...)`.
+4. **Identify the Base Cases:** What are the smallest subproblems you can solve directly? This is where the recursion stops or the tabulation starts.
+5. **Choose an Approach:** Implement it either top-down (memoization) or bottom-up (tabulation).
+6. **Optimize (if needed):** Can you reduce the space complexity? For example, if `dp[i]` only depends on `dp[i-1]` and `dp[i-2]`, you only need to store 2 previous values, not the whole array.

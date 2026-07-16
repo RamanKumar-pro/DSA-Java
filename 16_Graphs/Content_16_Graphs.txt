@@ -1,0 +1,61 @@
+## Graph Algorithms
+
+### 1. **Core Concepts & Terminology**
+    - [ ] **Nodes (Vertices) and Edges:** The fundamental parts of a graph.
+    - [ ] **Directed vs. Undirected Graphs:**
+        - **Undirected:** Edges have no direction (e.g., a Facebook friendship).
+        - **Directed:** Edges have a direction (e.g., a Twitter follow).
+    - [ ] **Weighted vs. Unweighted Graphs:** Edges have a "cost" or "weight" vs. all edges being equal.
+    - [ ] **Adjacency List:** The most common way to represent a graph in interviews. A map or array where `graph[u]` is a list of nodes `v` that `u` has an edge to (`Map<Node, List<Node>>`).
+    - [ ] **Adjacency Matrix:** A 2D matrix where `matrix[i][j] = 1` (or weight) if there's an edge from `i` to `j`. Good for dense graphs, but uses more space (`V^2`).
+    - [ ] **Path:** A sequence of vertices connected by edges.
+    - [ ] **Cycle:** A path that starts and ends at the same vertex.
+    - [ ] **Connected Components:** In an undirected graph, a subset of vertices where there is a path between any two vertices.
+    - [ ] **DAG (Directed Acyclic Graph):** A directed graph with no cycles.
+
+### 2. **Graph Traversal Algorithms**
+    - **Breadth-First Search (BFS):**
+        - [ ] **Algorithm:** Uses a **Queue**. Visit a node, add all its unvisited neighbors to the queue, and repeat.
+        - [ ] **Use Case:** Finding the **shortest path** in an **unweighted** graph.
+        - [ ] **Implementation:** Requires a `queue` and a `visited` set/array.
+    - **Depth-First Search (DFS):**
+        - [ ] **Algorithm:** Uses **Recursion** (and the call stack) or an explicit **Stack**. Visit a node, then recursively (or iteratively) visit its first unvisited neighbor, going as deep as possible before backtracking.
+        - [ ] **Use Case:** Detecting cycles, finding connected components, topological sort.
+        - [ ] **Implementation:** Requires a `visited` set/array.
+
+### 3. **Key Graph Algorithms & Problem Patterns**
+    - [ ] **Number of Connected Components:**
+        - **Algorithm:** Loop through all nodes. If a node hasn't been visited, start a traversal (BFS or DFS) from it and increment a counter. The traversal will find all nodes in that component.
+    - [ ] **Cycle Detection:**
+        - **Undirected Graph:** During a traversal (like DFS), if you encounter a visited node that is not your immediate parent, you've found a cycle.
+        - **Directed Graph:** During DFS, maintain three sets of nodes: white (unvisited), gray (visiting), and black (finished). If you encounter a gray node, you've found a cycle.
+    - [ ] **Topological Sort (for DAGs):**
+        - [ ] **Concept:** A linear ordering of vertices such that for every directed edge `u -> v`, vertex `u` comes before `v` in the ordering.
+        - [ ] **Kahn's Algorithm (BFS-based):**
+            - Compute in-degrees of all nodes.
+            - Add all nodes with an in-degree of 0 to a queue.
+            - While the queue is not empty, dequeue a node, add it to the result, and decrement the in-degree of its neighbors. If a neighbor's in-degree becomes 0, enqueue it.
+        - [ ] **DFS-based Algorithm:**
+            - Perform DFS. The topological sort is the reverse of the post-order traversal.
+    - [ ] **Shortest Path Algorithms (Weighted Graphs):**
+        - [ ] **Dijkstra's Algorithm:**
+            - **Use Case:** Finds the shortest path from a **single source** to all other nodes in a **weighted graph with no negative edge weights**.
+            - **Algorithm:** Uses a **min-priority queue** to always explore the "closest" node next.
+        - [ ] **Bellman-Ford Algorithm:**
+            - **Use Case:** Single source shortest path in a weighted graph, **can handle negative edge weights**.
+            - **Algorithm:** Relaxes all edges `V-1` times. Can also detect negative cycles.
+        - [ ] **Floyd-Warshall Algorithm:**
+            - **Use Case:** Finds the shortest path between **all pairs** of nodes.
+            - **Algorithm:** `O(V^3)` dynamic programming approach.
+    - [ ] **Minimum Spanning Tree (MST) (for Undirected, Weighted Graphs):**
+        - [ ] **Concept:** A subgraph that connects all vertices together with the minimum possible total edge weight, without forming a cycle.
+        - [ ] **Prim's Algorithm:** Grows the MST from a starting node, greedily adding the cheapest edge that connects a vertex in the MST to a vertex outside the MST. (Similar to Dijkstra's).
+        - [ ] **Kruskal's Algorithm:** Sorts all edges by weight and adds them to the MST if they don't form a cycle. (Often uses a Union-Find data structure).
+
+### 4. **Advanced Topics**
+    - [ ] **Union-Find (Disjoint Set Union - DSU):**
+        - **Use Case:** Efficiently tracking connected components or checking for cycles (used in Kruskal's).
+        - **Operations:** `find(i)` (finds the representative of the set `i` is in) and `union(i, j)` (merges the sets containing `i` and `j`).
+        - **Optimizations:** Path Compression and Union by Rank/Size.
+    - [ ] **Network Flow (e.g., Ford-Fulkerson, Edmonds-Karp)**
+    - [ ] **String-related graph problems (e.g., Word Ladder)**

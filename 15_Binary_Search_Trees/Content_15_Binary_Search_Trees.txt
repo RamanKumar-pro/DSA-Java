@@ -1,0 +1,56 @@
+## Binary Search Trees (BST)
+
+### 1. **Core Concepts**
+    - [ ] **BST Invariant / Property:** For any given node `N`:
+        - All values in the **left** subtree of `N` are **less than** `N`'s value.
+        - All values in the **right** subtree of `N` are **greater than** `N`'s value.
+        - Both the left and right subtrees must also be binary search trees.
+    - [ ] **No Duplicate Values:** Typically, BSTs do not contain duplicate values. If they do, a convention must be followed (e.g., duplicates go to the right).
+    - [ ] **In-order Traversal:** An in-order traversal of a BST yields its elements in **sorted** order. This is a key property used for validation.
+    - [ ] **Time Complexity:** For a balanced BST, search, insert, and delete operations are `O(log n)`. For an unbalanced (skewed) BST, they degrade to `O(n)`.
+
+### 2. **Fundamental Operations**
+    - [ ] **Search:**
+        - Start at the root.
+        - If the target value is less than the current node's value, go left.
+        - If the target value is greater, go right.
+        - If the values are equal, you've found the node.
+        - If you reach `null`, the value is not in the tree.
+    - [ ] **Insertion:**
+        - Search for the position where the new node should be.
+        - Insert the new node as a leaf.
+    - [ ] **Deletion:**
+        - **Case 1: Node is a leaf:** Simply remove it.
+        - **Case 2: Node has one child:** Replace the node with its child.
+        - **Case 3: Node has two children:**
+            - Find the **in-order successor** (the smallest node in the right subtree) or the **in-order predecessor** (the largest node in the left subtree).
+            - Copy the successor's/predecessor's value to the node to be deleted.
+            - Delete the successor/predecessor node (which will have at most one child).
+
+### 3. **Key Problems and Patterns**
+    - [ ] **Validation:**
+        - [ ] **Validate Binary Search Tree:** Check if a given binary tree adheres to the BST properties.
+            - **Common Pitfall:** Simply checking `node.left.val < node.val` and `node.right.val > node.val` is NOT enough.
+            - **Correct Approach:** Pass down a valid range (`min`, `max`) for each node in the recursion.
+    - [ ] **Construction:**
+        - [ ] **Convert Sorted Array to Binary Search Tree:** Create a height-balanced BST from a sorted array. (Hint: The middle element of the array becomes the root).
+        - [ ] **Construct BST from Pre-order Traversal.**
+    - [ ] **Finding Elements:**
+        - [ ] **Lowest Common Ancestor (LCA) of a BST:** Much simpler than in a regular binary tree. The LCA is the node where the paths to the two target nodes diverge.
+        - [ ] **Kth Smallest Element in a BST:**
+            - **Approach 1:** Perform an in-order traversal and stop at the k-th element.
+            - **Approach 2 (Follow-up):** If the `TreeNode` can be modified to store the count of nodes in its left subtree, you can solve this in `O(log n)` time.
+    - [ ] **Using BST Properties:**
+        - Many problems that are hard on a generic binary tree become easier on a BST because of its ordering.
+
+### 4. **Self-Balancing BSTs (Advanced)**
+    - [ ] **Concept:** Why are they needed? To prevent the BST from becoming skewed (like a linked list) and ensure `O(log n)` performance.
+    - [ ] **AVL Trees:**
+        - One of the first self-balancing BSTs.
+        - Uses a "balance factor" (height of left subtree - height of right subtree).
+        - Performs "rotations" to re-balance the tree after insertions/deletions if the balance factor becomes > 1 or < -1.
+    - [ ] **Red-Black Trees:**
+        - Another type of self-balancing BST.
+        - Uses "color" (red or black) properties on nodes to ensure balance.
+        - This is what `TreeMap` and `TreeSet` in Java use internally.
+    - **Interview Scope:** You are generally not expected to implement an AVL or Red-Black tree from scratch in an interview, but you should **know what they are, why they are used, and their performance characteristics.**

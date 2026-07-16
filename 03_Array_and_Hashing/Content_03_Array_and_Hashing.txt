@@ -1,0 +1,59 @@
+## Arrays and Hashing
+
+### 1. **Basic Array Concepts**
+    - [ ] Static vs. Dynamic Arrays (e.g., Java's `ArrayList`)
+    - [ ] Accessing elements (O(1))
+    - [ ] Inserting/Deleting elements (O(n))
+    - [ ] Traversing an array
+
+### 2. **Array Manipulation Techniques**
+    - [ ] In-place operations
+    - [ ] Reversing an array
+    - [ ] Rotating an array (k times)
+    - [ ] Rearranging elements (e.g., move zeros to end)
+
+### 3. **Hashing Concepts**
+    - [ ] **Hash Functions:**
+        - [ ] Properties of a good hash function
+        - [ ] `hashCode()` in Java
+    - [ ] **Hash Tables (HashMap/HashSet):**
+        - [ ] How they work internally (buckets, linked lists/trees)
+        - [ ] Collision Resolution (Chaining vs. Open Addressing)
+        - [ ] Time Complexity: Average O(1), Worst O(n)
+    - [ ] **Common Use Cases:**
+        - [ ] Checking for existence/frequency of items (e.g., Two Sum)
+        - [ ] Storing key-value pairs
+        - [ ] Finding duplicates
+        - [ ] Grouping items (e.g., Group Anagrams)
+
+### 4. **Key Patterns and Techniques**
+    - [ ] **Prefix Sum:**
+        - [ ] Calculating prefix sums/products
+        - [ ] Problems involving subarray sums/products (e.g., Subarray Sum Equals K)
+        - [ ] Difference arrays
+    - [ ] **Sliding Window:** (*Often its own topic, but related*)
+        - [ ] Fixed-size window
+        - [ ] Variable-size window
+        - [ ] Problems: Max/Min Subarray Sum, Longest Substring without Repeating Characters
+    - [ ] **Two Pointers:** (*Often its own topic, but related*)
+        - [ ] Opposite ends (e.g., from start and end)
+        - [ ] Same direction (fast and slow pointers)
+        - [ ] Problems: Palindrome check, Squaring a sorted array, Container with Most Water
+
+### 5. **Common Array/Hashing Problems**
+    - [ ] **Easy:**
+        - [ ] Contains Duplicate
+        - [ ] Valid Anagram
+        - [ ] Two Sum
+        - [ ] Replace Elements with Greatest Element on Right Side
+    - [ ] **Medium:**
+        - [ ] Top K Frequent Elements
+        - [ ] Product of Array Except Self
+        - [ ] Longest Consecutive Sequence
+        - [ ] Group Anagrams
+        - [ ] Valid Sudoku
+    - [ ] **Matrix/2D Arrays:**
+        - [ ] Traversals (row-by-row, column-by-column, diagonal)
+        - [ ] Spiral Matrix
+        - [ ] Rotating a Matrix
+        - [ ] Setting Matrix Zeroes

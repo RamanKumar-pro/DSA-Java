@@ -1,0 +1,56 @@
+## Bit Manipulation
+
+### 1. **Core Concepts & Operators**
+    - [ ] **Binary Representation:** Understanding how integers are stored in binary (base-2).
+    - [ ] **Signed Integers:** Two's Complement representation for negative numbers.
+    - [ ] **Bitwise Operators:**
+        - [ ] `&` (AND): Sets bit to 1 if both bits are 1.
+        - [ ] `|` (OR): Sets bit to 1 if at least one bit is 1.
+        - [ ] `^` (XOR): Sets bit to 1 if the bits are different.
+        - [ ] `~` (NOT / Complement): Inverts all the bits.
+        - [ ] `<<` (Left Shift): `x << y` is equivalent to `x * 2^y`.
+        - [ ] `>>` (Signed Right Shift): `x >> y` is equivalent to `x / 2^y`. Preserves the sign bit.
+        - [ ] `>>>` (Unsigned Right Shift): Fills the new bits with 0, regardless of the sign.
+
+### 2. **Common Bitwise Techniques & Tricks**
+    - [ ] **Masking:** Using a "mask" integer to target specific bits. `mask = 1 << i` creates a mask for the i-th bit.
+    - [ ] **Get i-th bit:** `(number & (1 << i)) != 0`
+    - [ ] **Set i-th bit:** `number = number | (1 << i)`
+    - [ ] **Clear i-th bit:** `number = number & ~(1 << i)`
+    - [ ] **Toggle i-th bit:** `number = number ^ (1 << i)`
+    - [ ] **Check if a number is a power of 2:** `(n > 0) && (n & (n - 1)) == 0`
+    - [ ] **Count set bits (Hamming Weight):**
+        - [ ] Loop and check each bit.
+        - [ ] Brian Kernighan's algorithm: `n = n & (n - 1)` in a loop.
+        - [ ] `Integer.bitCount(n)` in Java.
+    - [ ] **Find the missing number in a range [0, n]:** XOR all numbers in the array and all numbers in the range. The result is the missing number.
+    - [ ] **Find the single number that appears once:** XOR all numbers in the array. The result is the unique number.
+
+### 3. **XOR Properties**
+    - [ ] `x ^ 0 = x`
+    - [ ] `x ^ x = 0`
+    - [ ] `x ^ y = y ^ x` (Commutative)
+    - [ ] `(x ^ y) ^ z = x ^ (y ^ z)` (Associative)
+    - These properties are the foundation for solving many problems like "single number" or "missing number".
+
+### 4. **Common Bit Manipulation Problems**
+    - [ ] **Easy:**
+        - [ ] Number of 1 Bits (Hamming Weight)
+        - [ ] Counting Bits (create an array of hamming weights from 0 to n)
+        - [ ] Single Number
+        - [ ] Missing Number
+        - [ ] Reverse Bits
+        - [ ] Power of Two
+    - [ ] **Medium:**
+        - [ ] Single Number II (appears once, others thrice)
+        - [ ] Single Number III (two numbers appear once)
+        - [ ] Sum of Two Integers (without using + or -)
+        - [ ] Bitwise AND of Numbers Range
+        - [ ] Reverse Integer
+    - [ ] **Hard:**
+        - [ ] Minimum Flips to Make a OR b Equal to c
+
+### 5. **Representing Sets**
+    - A bitmask can represent a subset of a small collection (up to 32 or 64 items).
+    - If the i-th bit is 1, the i-th element is in the subset.
+    - This is useful in dynamic programming with states (e.g., TSP with bitmask DP).

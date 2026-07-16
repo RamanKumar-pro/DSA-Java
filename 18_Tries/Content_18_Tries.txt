@@ -1,0 +1,83 @@
+## Tries (Prefix Trees)
+
+### 1. **Core Concepts**
+- **What is a Trie?** A Trie, also known as a prefix tree, is a tree-like data structure that stores a dynamic set of strings. It's particularly efficient for tasks involving prefixes.
+- **Node Structure:**
+    - Each node represents a character.
+    - A node typically contains:
+        - An array or map of children nodes (e.g., `TrieNode[26]` for lowercase English letters).
+        - A boolean flag, `isEndOfWord`, to mark if the path to this node forms a complete word.
+- **Root Node:** The root is an empty node that doesn't represent any character.
+- **Visualization:** The path from the root to a node represents a prefix. If that node's `isEndOfWord` is true, that prefix is also a complete word in the set.
+
+### 2. **Core Operations**
+- **Insertion (`insert`):**
+    - **Time Complexity:** `O(L)`, where `L` is the length of the string.
+    - **Algorithm:**
+        1. Start at the root.
+        2. For each character in the string:
+           - If a child node for that character doesn't exist, create it.
+           - Move to the child node.
+        3. After the loop, mark the current node's `isEndOfWord` as `true`.
+
+- **Search (`search`):**
+    - **Time Complexity:** `O(L)`
+    - **Algorithm:**
+        1. Start at the root.
+        2. For each character in the string:
+           - If a child node for that character doesn't exist, the string is not in the trie. Return `false`.
+           - Move to the child node.
+        3. After the loop, return `true` **only if** the current node's `isEndOfWord` is `true`.
+
+- **Prefix Search (`startsWith`):**
+    - **Time Complexity:** `O(P)`, where `P` is the length of the prefix.
+    - **Algorithm:**
+        1. Same as `search`, but you don't need to check the `isEndOfWord` flag at the end.
+        2. If the loop completes, it means the prefix exists. Return `true`.
+
+### 3. **Why Use a Trie?**
+- **Advantages over Hash Sets for Strings:**
+    - **Prefix-based operations:** Tries excel at `startsWith` queries, which are inefficient with hash sets.
+    - **Alphabetical ordering:** You can traverse a trie to retrieve all strings in alphabetical order.
+    - **Space efficiency for common prefixes:** Strings with the same prefix share the same nodes (e.g., "apple", "apply", "ape" all share the "ap" nodes).
+
+- **Disadvantages:**
+    - **Space:** A trie can take up a lot of memory if the strings do not share many prefixes or if the character set is large. Each node might store many null pointers.
+
+### 4. **Common Trie Problems**
+- [ ] **Implement Trie (Prefix Tree):** The fundamental problem of building the data structure itself.
+- [ ] **Word Search II:**
+    - **Problem:** Find all words from a dictionary that can be formed in a 2D board of characters.
+    - **Solution:** Insert all dictionary words into a trie. Then, perform a DFS (backtracking) on the board. The trie helps you prune the search space efficiently. At each step of the DFS, you only explore paths that correspond to a valid prefix in the trie.
+- [ ] **Design Add and Search Words Data Structure:**
+    - **Problem:** Design a structure that supports adding words and searching for words that might contain a `.` wildcard character (which can match any letter).
+    - **Solution:** A standard trie, but the search function must be modified (recursively) to handle the `.`. When a `.` is encountered, you must explore all existing children of the current node.
+- [ ] **Maximum XOR of Two Numbers in an Array:**
+    - **Problem:** Find the maximum result of `nums[i] ^ nums[j]`.
+    - **Solution:** Insert the binary representations of all numbers into a trie. For each number, traverse the trie to find the other number that would maximize the XOR result (by greedily trying to find a number with the opposite bit at each position).
+
+### 5. **Implementation Details**
+- **Node Class:**
+  ```java
+  class TrieNode {
+      TrieNode[] children;
+      boolean isEndOfWord;
+
+      public TrieNode() {
+          children = new TrieNode[26]; // For 'a' through 'z'
+          isEndOfWord = false;
+      }
+  }
+  ```
+- **Trie Class:**
+  ```java
+  class Trie {
+      private TrieNode root;
+
+      public Trie() {
+          root = new TrieNode();
+      }
+
+      // insert, search, startsWith methods...
+  }
+  ```

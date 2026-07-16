@@ -1,0 +1,66 @@
+## Core Java Concepts for Interviews
+
+### 1. **Java Fundamentals**
+    - [ ] Basic Syntax and Data Types (primitives vs. objects)
+    - [ ] Operators (arithmetic, relational, logical, bitwise)
+    - [ ] Control Flow (if-else, switch, for, while, do-while)
+    - [ ] Methods and Method Overloading
+    - [ ] Constructors and `this` keyword
+    - [ ] `static` keyword (variables and methods)
+    - [ ] `final` keyword (variables, methods, classes)
+    - [ ] Garbage Collection and `finalize()`
+
+### 2. **Object-Oriented Programming (OOPs)**
+    - [ ] **Four Pillars of OOP:**
+        - [ ] Encapsulation
+        - [ ] Abstraction
+        - [ ] Inheritance
+        - [ ] Polymorphism (runtime vs. compile-time)
+    - [ ] Classes and Objects
+    - [ ] Inheritance (IS-A relationship), `super` keyword
+    - [ ] Polymorphism: Overriding and Overloading
+    - [ ] Abstraction: Abstract Classes and Interfaces
+    - [ ] `instanceof` operator
+    - [ ] Association, Aggregation, and Composition
+
+### 3. **Java Collections Framework**
+    - [ ] `Collection` interface vs. `Collections` utility class
+    - [ ] **List Interface:**
+        - [ ] `ArrayList` (dynamic array, amortization)
+        - [ ] `LinkedList` (doubly linked list, use cases)
+        - [ ] `Vector` vs. `ArrayList`
+    - [ ] **Queue Interface:**
+        - [ ] `LinkedList` as a Queue
+        - [ ] `PriorityQueue` (heap implementation)
+        - [ ] `Deque` and `ArrayDeque`
+    - [ ] **Set Interface:**
+        - [ ] `HashSet` (hash table implementation)
+        - [ ] `LinkedHashSet` (maintains insertion order)
+        - [ ] `TreeSet` (sorted set, red-black tree)
+    - [ ] **Map Interface:**
+        - [ ] `HashMap` (how it works, collision resolution)
+        - [ ] `LinkedHashMap` (maintains insertion order)
+        - [ ] `TreeMap` (sorted map)
+        - [ ] `Hashtable` vs. `HashMap`
+    - [ ] `Comparable` vs. `Comparator`
+    - [ ] Iterators and `ConcurrentModificationException`
+
+### 4. **Exception Handling**
+    - [ ] `try-catch-finally` blocks
+    - [ ] `throw` vs. `throws`
+    - [ ] Checked vs. Unchecked Exceptions
+    - [ ] Custom Exceptions
+
+### 5. **Java 8+ Features**
+    - [ ] Lambda Expressions
+    - [ ] Functional Interfaces (`@FunctionalInterface`)
+    - [ ] Stream API (map, filter, reduce, collect)
+    - [ ] `Optional` class
+    - [ ] Default and static methods in interfaces
+
+### 6. **Other Important Concepts**
+    - [ ] String vs. `StringBuilder` vs. `StringBuffer`
+    - [ ] Immutability and String Pool
+    - [ ] Generics (`<T>`)
+    - [ ] Basic Multithreading (`Thread` class, `Runnable` interface) - *often a separate deep-dive topic*
+    - [ ] Pass-by-Value (and how it applies to object references)

@@ -1,0 +1,66 @@
+## Stacks and Queues
+
+### 1. **Stack (LIFO - Last-In, First-Out)**
+    - [ ] **Core Concept:** Think of a stack of plates. You add (push) to the top and remove (pop) from the top.
+    - [ ] **Key Operations:**
+        - `push(item)`: Add an item to the top.
+        - `pop()`: Remove and return the top item.
+        - `peek()` or `top()`: Return the top item without removing it.
+        - `isEmpty()`: Check if the stack is empty.
+    - [ ] **Java Implementation:**
+        - `Stack<T> stack = new Stack<>();` (Legacy, thread-safe, but `ArrayDeque` is preferred).
+        - `Deque<T> stack = new ArrayDeque<>();` (Modern, faster, and more versatile).
+    - [ ] **Common Use Cases:**
+        - Function call stack (recursion).
+        - Parsing expressions (e.g., balancing parentheses).
+        - Backtracking algorithms.
+        - "Undo" functionality.
+
+### 2. **Queue (FIFO - First-In, First-Out)**
+    - [ ] **Core Concept:** Think of a checkout line. You add (enqueue) to the back and remove (dequeue) from the front.
+    - [ ] **Key Operations:**
+        - `add(item)` or `offer(item)`: Add an item to the back.
+        - `remove()` or `poll()`: Remove and return the front item.
+        - `element()` or `peek()`: Return the front item without removing it.
+        - `isEmpty()`: Check if the queue is empty.
+    - [ ] **Java Implementation:**
+        - `Queue<T> queue = new LinkedList<>();` (Commonly used).
+        - `Queue<T> queue = new ArrayDeque<>();` (Also a good choice).
+    - [ ] **Common Use Cases:**
+        - Breadth-First Search (BFS) in graphs and trees.
+        - Order processing systems.
+        - Task scheduling (e.g., in an operating system).
+        - Buffering data streams.
+
+### 3. **Specialized Queues**
+    - [ ] **Deque (Double-Ended Queue):**
+        - Can add/remove from both the front and the back.
+        - Can be used as both a stack and a queue.
+        - `ArrayDeque` is the primary implementation in Java.
+    - [ ] **Priority Queue:**
+        - Each item has a priority; the item with the highest priority is removed first.
+        - Implemented using a Heap data structure.
+        - `PriorityQueue<T> pq = new PriorityQueue<>();` (min-heap by default in Java).
+        - `PriorityQueue<T> pq = new PriorityQueue<>(Collections.reverseOrder());` (for a max-heap).
+
+### 4. **Key Problem Patterns**
+    - [ ] **Monotonic Stack:**
+        - A stack that maintains a specific order (either increasing or decreasing).
+        - When pushing a new element, pop elements that violate the order.
+        - **Use Case:** Finding the "next greater element" or "previous smaller element" for each item in an array.
+        - **Problems:** Next Greater Element I & II, Daily Temperatures, Largest Rectangle in Histogram.
+    - [ ] **Parentheses / Brackets Validation:**
+        - Use a stack to match opening and closing brackets.
+        - Push opening brackets. When a closing bracket is found, check if the top of the stack is the matching opening one.
+        - **Problems:** Valid Parentheses, Generate Parentheses.
+    - [ ] **Expression Evaluation:**
+        - Infix, Prefix (Polish), Postfix (Reverse Polish) notations.
+        - Use a stack to evaluate Postfix expressions.
+        - Use a stack (or two) to convert Infix to Postfix (Shunting-yard algorithm).
+        - **Problems:** Evaluate Reverse Polish Notation.
+    - [ ] **Simulations:**
+        - Use a stack or queue to directly simulate a described process.
+        - **Problems:** Asteroid Collision, Car Fleet.
+    - [ ] **Implementing one with the other:**
+        - Implement Queue using Stacks.
+        - Implement Stack using Queues.

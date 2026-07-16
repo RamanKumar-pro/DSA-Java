@@ -1,0 +1,59 @@
+## Linked Lists
+
+### 1. **Core Concepts**
+    - [ ] **Singly Linked List:**
+        - [ ] Node structure (`val`, `next`)
+        - [ ] Head and Tail pointers
+        - [ ] Traversal
+    - [ ] **Doubly Linked List:**
+        - [ ] Node structure (`val`, `next`, `prev`)
+        - [ ] Advantages over Singly Linked List (bidirectional traversal)
+    - [ ] **Circular Linked List:**
+        - [ ] Tail's `next` points to Head
+    - [ ] **Comparison with Arrays:**
+        - [ ] Dynamic size
+        - [ ] Ease of insertion/deletion (O(1) if node is known)
+        - [ ] No random access (O(n) for search)
+        - [ ] Memory overhead (for pointers)
+
+### 2. **Fundamental Operations**
+    - [ ] Insertion (at head, at tail, at a specific position)
+    - [ ] Deletion (from head, from tail, a specific value/node)
+    - [ ] Search for a value
+    - [ ] Get length of the list
+
+### 3. **Key Patterns and Techniques**
+    - [ ] **Dummy/Sentinel Node:**
+        - [ ] Simplifies edge cases for head operations (e.g., removing the head).
+        - [ ] Create a `dummy` node that points to the real head.
+    - [ ] **Two Pointers (Fast and Slow):**
+        - [ ] **Finding the middle:** Fast pointer moves 2 steps, slow moves 1. When fast reaches the end, slow is at the middle.
+        - [ ] **Detecting a cycle (Floyd's Cycle-Finding Algorithm):** If fast and slow pointers meet, there is a cycle.
+        - [ ] **Finding the start of a cycle:** After detection, move one pointer to the head and advance both one step at a time. They will meet at the cycle's start.
+    - [ ] **Reversing a Linked List:**
+        - [ ] Iterative approach (using `prev`, `curr`, `next` pointers).
+        - [ ] Recursive approach.
+
+### 4. **Common Linked List Problems**
+    - [ ] **Easy:**
+        - [ ] Reverse Linked List
+        - [ ] Merge Two Sorted Lists
+        - [ ] Linked List Cycle (check for cycle)
+        - [ ] Middle of the Linked List
+        - [ ] Remove Duplicates from Sorted List
+        - [ ] Palindrome Linked List
+    - [ ] **Medium:**
+        - [ ] Reorder List
+        - [ ] Remove Nth Node From End of List
+        - [ ] Linked List Cycle II (find start of cycle)
+        - [ ] Add Two Numbers
+        - [ ] Copy List with Random Pointer
+        - [ ] Rotate List
+    - [ ] **Hard:**
+        - [ ] Merge k Sorted Lists
+        - [ ] Reverse Nodes in k-Group
+
+### 5. **Problem-Solving Strategies**
+    - [ ] Draw the pointers! Visualize the state before and after each step.
+    - [ ] Handle edge cases carefully: empty list, single-node list, operations at head/tail.
+    - [ ] Consider if a dummy head node would simplify the logic.
